@@ -1,6 +1,6 @@
 # Printf
 
-The goal of this project is to learn the inner workings of the printf function by writing our own. We are instructed to write code using [Betty's style](https://github.com/holbertonschool/Betty/wiki).
+The goal of this project is to learn the inner workings of the printf function by writing our own. We will create documentation for the new function by creating a man page for it. We are instructed to write code using [Betty's style](https://github.com/holbertonschool/Betty/wiki).
 
 ## Project Requirements:
 
