@@ -9,7 +9,7 @@ The goal of this project is to learn the inner workings of the printf function b
 * A README.md file required
 * No global variables
 * No more than 5 functions per file
-* Only standard library functions allowed:
+* Only functions and macros allowed:
 	* write (man 2 write)
 	* malloc (man 3 malloc)
 	* free (man 3 free)
