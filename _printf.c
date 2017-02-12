@@ -38,6 +38,7 @@ int _printf(const char *format, ...)
 
 				case '%':
 					print_p(format[i], count);
+					count++;
 					break;
 			}
 		}
