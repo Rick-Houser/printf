@@ -28,14 +28,21 @@ int _printf(const char *format, ...)
 				case 'c':
 					c = va_arg(arg, int);
 					print_char(c);
+					count++;
 					break;
 
 				case 's':
 					s = va_arg(arg, char *);
 					print_string(s);
+					count++;
 					break;
 
 				case '%':
+					if (format[i + 1] == '%')
+					{
+						count--;
+					}
+					count++;
 					print_char('%');
 					break;
 			}
@@ -43,9 +50,9 @@ int _printf(const char *format, ...)
 		else
 		{
 			print_char(format[i]);
+			count++;
 		}
 	i++;
-	count++;
 	}
 	va_end(arg);
 	return (count);
