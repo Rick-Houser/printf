@@ -1,10 +1,9 @@
 #include "holberton.h"
 
 /**
- * print_char - Function that prints out a given character.
- * @c: A character to be printed.
+ * print_string - Function that prints out a string of chars.
+ * @t: string to iterate.
  *
- * Return: The ...
  */
 
 void print_string(char *t)
