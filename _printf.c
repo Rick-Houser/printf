@@ -10,7 +10,8 @@
 
 int _printf(const char *format, ...)
 {
-	int i, count;
+	int i, c, count;
+	char *s;
 	va_list arg;
 
 	va_start(arg, format);
@@ -21,8 +22,25 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			count++;
-			get_directive(format[i], count, arg);
+			switch (format[i])
+			{
+				case 'c':
+					c = va_arg(arg, int);
+					print_char(c);
+					count++;
+					break;
+
+				case 's':
+					s = va_arg(arg, char *);
+					print_string(s);
+					count++;
+					break;
+
+				case '%':
+					print_p(format[i], count);
+					count++;
+					break;
+			}
 		}
 		else
 		{
@@ -31,41 +49,5 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(arg);
-	return (count);
-}
-
-/**
- * get_directive - function that checks for directives.
- * @token: character to check.
- * @count: count of chars.
- * @arg: argument list.
- *
- * Return: the number of characters printed(excluding null at end of strings).
- */
-
-int get_directive(char token, int count, va_list arg)
-{
-	int c;
-	char *s;
-
-	switch (token)
-	{
-		case 'c':
-			c = va_arg(arg, int);
-			print_char(c);
-			count++;
-			break;
-
-		case 's':
-			s = va_arg(arg, char *);
-			print_string(s);
-			count++;
-			break;
-
-		case '%':
-			print_char('%');
-			count++;
-			break;
-	}
 	return (count);
 }
