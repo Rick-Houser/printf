@@ -1,6 +1,6 @@
-#include<stdio.h>
-#include<stdarg.h>
+#include <stdarg.h>
 #include "holberton.h"
+
 /**
  * _printf - function that produces output according to a format.
  * @format: character string composed of 0 or more directives.
@@ -24,6 +24,11 @@ int _printf(const char *format, ...)
 			i++;
 			switch (format[i])
 			{
+				case 'd':
+					c = va_arg(arg, int);
+					print_number(c);
+					break;
+
 				case 'c':
 					c = va_arg(arg, int);
 					print_char(c);
@@ -37,7 +42,7 @@ int _printf(const char *format, ...)
 					break;
 
 				case '%':
-					print_p(format[i], count);
+					print_char(format[i]);
 					count++;
 					break;
 			}
