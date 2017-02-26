@@ -1,35 +1,5 @@
 #include<stdarg.h>
 #include "holberton.h"
-/**
- * _printf - function that produces output according to a format.
- * @format: character string composed of 0 or more directives.
- *
- * Return: the number of characters printed(excluding null at end of strings).
- */
-int _printf(const char *format, ...)
-{
-	int i, count;
-	va_list arg;
-
-	va_start(arg, format);
-	count = 0;
-
-	for (i = 0; format[i] != '\0'; i++)
-	{
-		if (format[i] == '%')
-		{
-			i++;
-			count = get_directive(format[i], count, arg);
-		}
-		else
-		{
-			print_char(format[i]);
-			count++;
-		}
-	}
-	va_end(arg);
-	return (count);
-}
 
 /**
  * get_directive - function that checks for directives.
@@ -69,5 +39,37 @@ int get_directive(char token, int count, va_list arg)
 			count++;
 			break;
 	}
+	return (count);
+}
+
+/**
+ * _printf - function that produces output according to a format.
+ * @format: character string composed of 0 or more directives.
+ *
+ * Return: the number of characters printed(excluding null at end of strings).
+ */
+
+int _printf(const char *format, ...)
+{
+	int i, count;
+	va_list arg;
+
+	va_start(arg, format);
+	count = 0;
+
+	for (i = 0; format[i] != '\0'; i++)
+	{
+		if (format[i] == '%')
+		{
+			i++;
+			count = get_directive(format[i], count, arg);
+		}
+		else
+		{
+			print_char(format[i]);
+			count++;
+		}
+	}
+	va_end(arg);
 	return (count);
 }
