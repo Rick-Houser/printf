@@ -24,11 +24,6 @@ int _printf(const char *format, ...)
 			i++;
 			switch (format[i])
 			{
-				case 'd':
-					c = va_arg(arg, int);
-					print_number(c);
-					break;
-
 				case 'c':
 					c = va_arg(arg, int);
 					print_char(c);
