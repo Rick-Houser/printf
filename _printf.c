@@ -59,8 +59,8 @@ int _printf(const char *format, ...)
 	va_start(arg, format);
 	count = 0;
 
-	if (!format) /* Can return NULL or 0. Check spec on intranet */
-			return (0);
+	if (!format)/* Can return NULL or 0. Check spec on intranet */
+		return (0);
 
 	for (i = 0; format[i] != '\0'; i++)
 	{
