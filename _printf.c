@@ -60,7 +60,7 @@ int _printf(const char *format, ...)
 	count = 0;
 
 	if (!format)/* Can return NULL or 0. Check spec on intranet */
-		return (0);
+		return (-1);
 
 	for (i = 0; format[i] != '\0'; i++)
 	{
