@@ -46,7 +46,7 @@ void int_min(void)
  * print_number - function that prints a given integer using ascii values.
  * @n: integer passed
  *
- * Description: Takes an integer and prints each value using the ascii table.
+ * Return: Length of number.
  */
 
 int print_number(int n)
@@ -70,7 +70,7 @@ int print_number(int n)
 		}
 		temp = n;
 
-		while (temp > 9)  /* Calculate length of numbers */
+		while (temp > 9)
 		{
 			len++;
 			temp /= 10;
