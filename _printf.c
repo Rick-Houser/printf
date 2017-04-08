@@ -19,7 +19,7 @@ int get_flag(char token, int count, va_list arg)
 	{
 		case 'd':
 			c = va_arg(arg, int);
-			print_number(c);
+			count += print_number(c);
 			break;
 
 		case 'c':
@@ -30,10 +30,8 @@ int get_flag(char token, int count, va_list arg)
 
 		case 's':
 			s = va_arg(arg, char *);
-			if (!s)
-				count = 0;
-			print_string(s);
-			count++;
+			count -= 1; /* account for null terminator */
+			count += print_string(s);
 			break;
 
 		case '%':
@@ -67,10 +65,6 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			if (format[i] == 's')
-			{
-				count -= 1; /* Account for null string terminator */
-			}
 			count += get_flag(format[i], count, arg);
 		}
 		else
