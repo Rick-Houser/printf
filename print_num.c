@@ -8,7 +8,7 @@
  */
 
 int my_pow(int power)
-{ /* Function to calculate exponents */
+{
 	int i;
 	int result;
 
@@ -28,7 +28,7 @@ int my_pow(int power)
  */
 
 void int_min(void)
-{ /* Function to handle int min */
+{
 	print_char('-');
 	print_char('2');
 	print_char('1');
@@ -49,39 +49,41 @@ void int_min(void)
  * Description: Takes an integer and prints each value using the ascii table.
  */
 
-void print_number(int n)
-	{ /* Func that outputs ascii chars */
-	int len, num, temp;
+int print_number(int n)
+	{
+	int len, num, temp, length;
 
 	len = 0;
+	length = 0;
 
 	if (n == -2147483648)
-	{ /* Call int_min function */
+	{
 		int_min();
 	}
-	if (n != -2147483648) /* Doesn't run for int_min */
+	if (n != -2147483648)
 	{
-		if (n < 0) /* runs for small neg values */
+		if (n < 0)
 		{
 			print_char('-');
 			n = (n * -1);
+			length++;
 		}
 		temp = n;
 
-		while (temp > 9)
-		{ /* Calculate length of numbers */
+		while (temp > 9)  /* Calculate length of numbers */
+		{
 			len++;
 			temp /= 10;
-		} /* temp is 1, len is 3 [1337]*/
+		}
+		length = len;
 
 		while (len >= 0)
-		{ /* Print each ascii char */
+		{
 			num = n / my_pow(len);
-/* 1. num = 1337 / 1000; num == 1 */
-/* 2. num = 337 / 100; num == 3 */
-			n = n - (num * my_pow(len)); /* n = 1337 - (1 * 1000); n = 337 */
-			print_char(num + 48); /* Print ascii char for '1' */
+			n = n - (num * my_pow(len));
+			print_char(num + 48);
 			len--;
 		}
 	}
+	return (length);
 }
