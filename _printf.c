@@ -24,19 +24,16 @@ int get_flag(char token, int count, va_list arg)
 
 		case 'c':
 			c = va_arg(arg, int);
-			print_char(c);
-			count++;
+			count += print_char(c);
 			break;
 
 		case 's':
 			s = va_arg(arg, char *);
-			count -= 1; /* account for null terminator */
 			count += print_string(s);
 			break;
 
 		case '%':
-			print_char(token);
-			count++;
+			count += print_char(token);
 			break;
 	}
 	return (count);
@@ -57,20 +54,20 @@ int _printf(const char *format, ...)
 	va_start(arg, format);
 	count = 0;
 
-	if (!format)/* Can return NULL or 0. Check spec on intranet */
+	if (!format)
 		return (-1);
 
 	for (i = 0; format[i] != '\0'; i++)
 	{
-		if (format[i] == '%')
-		{
-			i++;
-			count += get_flag(format[i], count, arg);
-		}
-		else
+		if (format[i] != '%')
 		{
 			print_char(format[i]);
 			count++;
+		}
+		else
+		{
+			i++;
+			count = get_flag(format[i], count, arg);
 		}
 	}
 	va_end(arg);
