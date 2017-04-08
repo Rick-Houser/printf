@@ -2,16 +2,18 @@
 
 /**
  * print_string - Function that prints out a string of chars.
- * @t: string to iterate.
+ * @str: string to iterate.
  *
+ * Return: the string length.
  */
 
-void print_string(char *t)
+int print_string(char *str)
 {
-	int k;
+	int i;
 
-	for (k = 0; t[k]; t++)
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		print_char(t[k]);
+		print_char(str[i]);
 	}
+	return (i);
 }
