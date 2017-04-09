@@ -33,12 +33,7 @@ int get_flag(char token, int count, va_list arg)
 			break;
 
 		case '%':
-			count += print_char(token);
-			break;
-
-		default:
 			count += print_char('%');
-			print_char(']');
 
 	}
 	return (count);
@@ -66,19 +61,13 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] != '%')
 		{
-			print_char(format[i]);
-			count++;
+			count += print_char(format[i]);
 		}
 		else
 		{
-			if (!format[i + 1]) /* Checks for user entering a single [ */
-				return (-1);
-
-			if (format[i + 2]) /* Checks for second flag or closing bracket after % */
-			{
+			if (format[i + 1] != ']')
 				i++;
-			}
-			count = get_flag(format[i], count, arg); /* else % is passed */
+			count = get_flag(format[i], count, arg);
 		}
 	}
 	va_end(arg);
