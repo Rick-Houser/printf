@@ -29,12 +29,14 @@ int get_flag(char token, int count, va_list arg)
 
 		case 's':
 			s = va_arg(arg, char *);
-			count += print_string(s);
+			if (!s)
+				count += print_string("(null)");
+			else
+				count += print_string(s);
 			break;
 
 		case '%':
 			count += print_char('%');
-
 	}
 	return (count);
 }
