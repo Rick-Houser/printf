@@ -22,6 +22,11 @@ int get_flag(char token, int count, va_list arg)
 			count += print_number(c);
 			break;
 
+		case 'i':
+			c = va_arg(arg, int);
+			count += print_number(c);
+			break;
+
 		case 'c':
 			c = va_arg(arg, int);
 			count += print_char(c);
