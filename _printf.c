@@ -37,6 +37,11 @@ int get_flag(char token, int count, va_list arg)
 
 		case '%':
 			count += print_char('%');
+			break;
+
+		default:
+			count += print_char('%');
+			count += print_char(token);
 	}
 	return (count);
 }
@@ -63,12 +68,10 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] != '%')
 		{
-			count += print_char(format[i]);
-		}
+			count += print_char(format[i]); 
 		else
 		{
-			if (format[i + 1] != ']')
-				i++;
+			i++;
 			count = get_flag(format[i], count, arg);
 		}
 	}
