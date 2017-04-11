@@ -72,8 +72,15 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			i++;
-			count = get_flag(format[i], count, arg);
+			if (format[i + 1])
+			{
+				i++;
+				count = get_flag(format[i], count, arg);
+			}
+			else
+			{
+				return (-1);
+			}
 		}
 	}
 	va_end(arg);
