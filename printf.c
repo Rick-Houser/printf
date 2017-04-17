@@ -34,7 +34,7 @@ int get_flag(char token, int count, va_list arg)
 
 		case 's':
 			s = va_arg(arg, char *);
-			if (!s)
+			if (!s) /* handles user passing NULL to [%s] */
 				count += print_string("(null)");
 			else
 				count += print_string(s);
@@ -44,7 +44,7 @@ int get_flag(char token, int count, va_list arg)
 			count += print_char('%');
 			break;
 
-		default:
+		default: /* handle edge case [%] */
 			count += print_char('%');
 			count += print_char(token);
 	}
@@ -71,18 +71,18 @@ int _printf(const char *format, ...)
 
 	for (i = 0; format[i] != '\0'; i++)
 	{
-		if (format[i] != '%')
+		if (format[i] != '%') /* handle input without flags */
 		{
-			count += print_char(format[i]); /* check without count+= */
+			count += print_char(format[i]);
 		}
 		else
 		{
-			if (format[i + 1])
+			if (format[i + 1]) /* Ensure next is not null */
 			{
-				i++;
+				i++; /* move from % to d, c, s, etc */
 				count = get_flag(format[i], count, arg);
 			}
-			else
+			else /* Next is null */
 			{
 				return (-1);
 			}
