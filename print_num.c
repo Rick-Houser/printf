@@ -27,15 +27,15 @@ int print_number(int n)
 
 	while (copy < -9)
 	{
-		temp *= 10;
+		temp *= 10; /* powers of 10 - used for later division */
 		copy /= 10;
 	}
 
 	while (temp > 0)
 	{
-		num = (n / temp) * -1;
+		num = (n / temp) * -1; /* Divide => multiply (convert to neg/positive => assignment) */
 		length += print_char(num + 48);
-		n = n % temp;
+		n = n % temp; /* update with remainder */
 		temp /= 10;
 	}
 
