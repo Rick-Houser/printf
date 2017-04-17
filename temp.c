@@ -8,13 +8,13 @@ int main(void) {
 		int len3a, len3b;
 		int len2a, len2b;
 		printf("=======\n");
-		len1b = printf("%i\n", NULL);
+		len1b = printf("[%i]\n", NULL);
 		printf("=========\n");
-		len1a = _printf("%i\n", NULL);
+		len1a = _printf("[%i]\n", NULL);
 		printf("======\n");
-		len2a = _printf("%i", -123);
+		len2a = _printf("%i", 0);
 		printf("\n");
-		len2b = printf("%i", -123);
+		len2b = printf("%i", 0);
 		printf("\n");
 		_printf("%i", -123);
 		printf("\n");
