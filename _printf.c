@@ -73,7 +73,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] != '%')
 		{
-			count += print_char(format[i]); /* check without count+= */
+			count += print_char(format[i]);
 		}
 		else
 		{
@@ -82,7 +82,7 @@ int _printf(const char *format, ...)
 				i++;
 				count = get_flag(format[i], count, arg);
 			}
-			else /* next is NUL""L */
+			else
 			{
 				return (-1);
 			}
