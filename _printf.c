@@ -82,7 +82,7 @@ int _printf(const char *format, ...)
 				i++;
 				count = get_flag(format[i], count, arg);
 			}
-			else /* next is NULL */
+			else /* next is NUL""L */
 			{
 				return (-1);
 			}
