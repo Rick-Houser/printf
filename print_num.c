@@ -14,11 +14,11 @@ int print_number(int n)
 	temp = 1;
 	if (n > 0)
 	{
-		n = -n;
+		length += print_char('-');
 	}
 	else
 	{
-		length += print_char('-');
+		n = -n;
 	}
 	copy = n;
 
