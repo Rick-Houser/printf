@@ -12,6 +12,9 @@ int print_number(int n)
 
 	length = 0;
 	temp = 1;
+	if (!n)
+		print_char(0);
+
 	if (n < 0)
 	{
 		length += print_char('-');
