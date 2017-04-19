@@ -1,0 +1,25 @@
+.TH _printf 1 "April 18th 2017" "Version 1.0"
+
+.SH NAME
+_printf - my custom implementation of the printf function.
+
+.SH DESCRIPTION
+The 
+.B _printf 
+function produces output according to a format as described below. The 
+.B _printf 
+function writes output to stdout, the standard output stream.
+
+.SH OPTIONS
+
+.IP "%d, %i"
+Either specifier will result in the given integer being written.
+.IP %c
+A given character is written.
+.IP %s
+Write the given string to stdout.
+.IP %%
+A single '%' is written. 
+
+.SH AUTHOR
+Rick Houser
