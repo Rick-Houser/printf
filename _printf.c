@@ -18,13 +18,12 @@ int get_flag(char token, int count, va_list arg)
 	switch (token)
 	{
 		case 'd':
-			c = va_arg(arg, int);
-			count += print_number(c);
-			break;
-
 		case 'i':
 			c = va_arg(arg, int);
-			count += print_number(c);
+			if (c == 0)
+				count += print_char('0');
+			else
+				count += print_number(c);
 			break;
 
 		case 'c':
